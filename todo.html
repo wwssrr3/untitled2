@@ -3,57 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
 
-        var taskCout = 1;
-
-        var taskArray = [];
-
-        function addTask(event) {
-
-
-            if (event.keyCode !=  13 || event.target.value == "") return;
-
-            var ul = document.getElementById("ul");
-
-            var li = document.createElement("li");
-
-            li.setAttribute("id", taskCout);
-            taskCout ++;
-            li.innerHTML = '<input type="radio"/><input type="text" value='+event.target.value+'><button onclick="removeTask(event)">x</button>';
-            ul.appendChild(li);
-
-            event.target.value = "";
-            event.target.blur()
-        }
-
-        function removeTask(event) {
-
-            var ul = document.getElementById("ul");
-
-            var li = document.getElementById(event.target.parentElement.id)
-            ul.removeChild(li);
-        }
-
-        function editTask() {
-
-        }
-
-        function searchTask() {
-
-        }
-    </script>
 </head>
 <body>
 
 <input type="text" placeholder="what need to be done" onkeypress="addTask(event)">
 <ul id="ul">
-
 </ul>
 
+<label id="leftItemsCount" onmousedown="leftItemsCount()">0 item left </label>
 
 <script>
 
+    var taskCout = 0;
+
+    var taskArray = [];
+
+    function addTask(event) {
+
+
+        if (event.keyCode !=  13 || event.target.value == "") return;
+
+        var ul = document.getElementById("ul");
+
+        var li = document.createElement("li");
+
+        li.setAttribute("id", taskCout);
+        li.setAttribute("class", 'checkbox');
+        taskCout ++;
+        li.innerHTML = '<input type="checkbox" onclick="updateLabel(event)"/><input type="text" value='+event.target.value+'><button onclick="removeTask(event)">x</button>';
+        ul.appendChild(li);
+
+        event.target.value = "";
+        event.target.blur()
+    }
+
+    function removeTask(event) {
+
+        var ul = document.getElementById("ul");
+
+        var li = document.getElementById(event.target.parentElement.id)
+        ul.removeChild(li);
+    }
+
+    function editTask() {
+
+    }
+
+    function searchTask() {
+
+    }
+
+    function updateLabel(event) {
+
+        for (li in document.getElementById('ul').children)
+        {
+
+            console.log(li.firstChild.nodeValue)
+
+        }
+
+    }
 </script>
 </body>
 </html>
