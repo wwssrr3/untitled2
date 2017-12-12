@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        var taskCout = 1;
+
+        var taskArray = [];
+
+        function addTask(event) {
+
+
+            if (event.keyCode !=  13 || event.target.value == "") return;
+
+            var ul = document.getElementById("ul");
+
+            var li = document.createElement("li");
+
+            li.setAttribute("id", taskCout);
+            taskCout ++;
+            li.innerHTML = '<input type="radio"/><input type="text" value='+event.target.value+'><button onclick="removeTask(event)">x</button>';
+            ul.appendChild(li);
+
+            event.target.value = "";
+            event.target.blur()
+        }
+
+        function removeTask(event) {
+
+            var ul = document.getElementById("ul");
+
+            var li = document.getElementById(event.target.parentElement.id)
+            ul.removeChild(li);
+        }
+
+        function editTask() {
+
+        }
+
+        function searchTask() {
+
+        }
+    </script>
+</head>
+<body>
+
+<input type="text" placeholder="what need to be done" onkeypress="addTask(event)">
+<ul id="ul">
+
+</ul>
+
+
+<script>
+
+</script>
+</body>
+</html>
