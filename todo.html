@@ -11,7 +11,7 @@
 <ul id="ul">
 </ul>
 
-<label id="leftItemsCount" onmousedown="leftItemsCount()">0 item left </label>
+<label id="leftItemsCount" onmousedown="updateLabel()">0 item left </label>
 
 <script>
 
@@ -54,7 +54,7 @@
 
     }
 
-    function updateLabel(event) {
+    function updateLabel() {
 
         for (li in document.getElementById('ul').children)
         {
